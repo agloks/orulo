@@ -15,22 +15,6 @@ ActiveRecord::Schema.define(version: 2021_01_02_142127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.boolean "done"
-    t.bigint "todo_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["todo_id"], name: "index_items_on_todo_id"
-  end
-
-  create_table "todos", force: :cascade do |t|
-    t.string "title"
-    t.string "created_by"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -41,5 +25,4 @@ ActiveRecord::Schema.define(version: 2021_01_02_142127) do
     t.index ["favorites"], name: "index_users_on_favorites", using: :gin
   end
 
-  add_foreign_key "items", "todos"
 end
