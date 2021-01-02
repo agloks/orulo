@@ -8,9 +8,9 @@ RSpec.describe UsersController, type: [:controller, :request] do
   end
 
   # User signup test suite
-  describe 'POST /signup' do
+  describe 'POST /user/signup' do
     context 'when valid request' do
-      before { post '/signup', params: valid_attributes.to_json, headers: headers }
+      before { post '/user/signup', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new user' do
         expect(response).to have_http_status(201)
@@ -26,7 +26,7 @@ RSpec.describe UsersController, type: [:controller, :request] do
     end
 
     context 'when invalid request' do
-      before { post '/signup', params: {}, headers: headers }
+      before { post '/user/signup', params: {}, headers: headers }
 
       it 'does not create a new user' do
         expect(response).to have_http_status(422)

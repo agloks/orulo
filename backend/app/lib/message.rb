@@ -31,4 +31,12 @@ class Message
   def self.expired_token
     'Sorry, your token has expired. Please login to continue.'
   end
+
+  def self.successful_operation
+    'Operation done with successful'
+  end
+
+  def self.fail_operation
+    'Not was possible done this operation'
+  end
 end
