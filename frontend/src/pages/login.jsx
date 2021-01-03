@@ -20,10 +20,9 @@ import Container from '@material-ui/core/Container';
 
 export default function PersistentDrawerLeft() {
   const classes = loginStyle();
-  const auth = new AuthService()
   const [open, setOpen] = React.useState(false);
-
-  // console.log(auth.signup("oi", "oi@gmail.com", "123").then((s) => console.log(s)))
+  const [email, setEmail] = React.useState(false);
+  const [password, setPassword] = React.useState(false);
 
   const hook = {
     open: open,
@@ -34,6 +33,13 @@ export default function PersistentDrawerLeft() {
       setOpen(false);
     },
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    const auth = new AuthService()
+    auth.login(email, password).then((s) => console.log(s))
+  } 
 
   return (
     <div className={classes.root}>
@@ -52,7 +58,7 @@ export default function PersistentDrawerLeft() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -63,6 +69,7 @@ export default function PersistentDrawerLeft() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={event => setEmail(event.target.value)}
             />
             <TextField
               variant="outlined"
@@ -74,6 +81,7 @@ export default function PersistentDrawerLeft() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={event => setPassword(event.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -89,13 +97,8 @@ export default function PersistentDrawerLeft() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

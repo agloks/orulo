@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import HandleStorage from './handleStorage';
+
 class AuthService {
     constructor() {
         this.service = axios.create({
@@ -8,30 +10,53 @@ class AuthService {
         });
     }
 
-    signup(name, email, password) {
-        return this.service.post('/api/user/signup', {
+    async signup(name, email, password) {
+        const data = await this.service.post('/api/user/signup', {
                 name,
                 email,
                 password
             })
-            .then(response => response.data)
+
+        if(data.status === 201) {
+            HandleStorage.setStorage(data.data, "user");
+            HandleStorage.setStorage(data.data["auth_token"], "token");    
+        }
+    
+        return data;
     }
 
-    info() {
-        return this.service.get('/api/user/profile')
-            .then(response => {return response.data})
+    async info() {
+        const header = {"Authorization": HandleStorage.getStorage()["token"]}
+        const data = await this.service.get('/api/user/profile', {headers: header})
+        
+        if(data.status === 200) {
+            HandleStorage.setStorage(data.data, "user");
+        }
+    
+        return data;
     }
 
-    login(email, password) {
-        return this.service.post('/api/auth/login', {
+    async login(email, password) {
+        const data = await this.service.post('/api/auth/login', {
                 email,
                 password
             })
-            .then(response => response.data)
+        if(data.status === 200) {
+            HandleStorage.setStorage(data.data["auth_token"], "token");    
+        }
+
+        const confirmation = await this.info()
+
+        if(data.status != 200)
+            return false;
+            
+        return data;
     }
 
     logout() {
-        return this.service.get('/api/user/logout')
+        // return this.service.get('/api/user/logout')
+        HandleStorage.clearStorage();
+        return true;
     }
 }
 

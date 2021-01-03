@@ -18,18 +18,19 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
-
-
-import { customDrawer, useTheme } from "../assets/styles/components/customDrawer"
-import logo from "../assets/img/orulo_logo.png"
-
 import {
   Link
 } from "react-router-dom";
 
+import { customDrawer, useTheme } from "../assets/styles/components/customDrawer"
+import logo from "../assets/img/orulo_logo.png"
+import HandleStorage from '../libs/handleStorage';
+
 export default function CustomDrawer({hook}) {
   const classes = customDrawer();
   const theme = useTheme();
+  const user = HandleStorage.getStorage()["user"]
+  console.log(user)
 
   return (
     <div className={classes.root}>
