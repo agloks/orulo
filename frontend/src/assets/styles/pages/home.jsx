@@ -1,3 +1,4 @@
+import { colors } from '../base'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 const drawerWidth = 187;
@@ -11,6 +12,7 @@ const homeStyle = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    background: colors.lightBlue,
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -41,6 +43,8 @@ const homeStyle = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
+    position: "relative",
+    top: "12%",
   },
   content: {
     flexGrow: 1,
@@ -74,6 +78,10 @@ const homeStyle = makeStyles((theme) => ({
   },
   divider: {
     width: '100vw'
+  },
+  logo: {
+    maxWidth: "85px",
+    maxHeight: "85px",
   }
 }));
 

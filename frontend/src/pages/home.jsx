@@ -19,7 +19,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import { homeStyle, useTheme } from "../styles/pages/home"
+import { homeStyle, useTheme } from "../assets/styles/pages/home"
+
+import logo from "../assets/img/orulo_logo.png"
 
 export default function PersistentDrawerLeft() {
   const classes = homeStyle();
@@ -76,6 +78,7 @@ export default function PersistentDrawerLeft() {
         >
         <Grid item xs={2} className={classes.gridDrawerHeader}>
           <div className={classes.drawerHeader}>
+            <img src={logo} alt="Logo" className={classes.logo} />
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
             </IconButton>
