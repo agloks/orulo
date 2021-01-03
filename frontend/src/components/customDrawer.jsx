@@ -22,15 +22,15 @@ import {
   Link
 } from "react-router-dom";
 
-import { customDrawer, useTheme } from "../assets/styles/components/customDrawer"
+import { customDrawerStyle, useTheme } from "../assets/styles/components/customDrawer"
 import logo from "../assets/img/orulo_logo.png"
 import HandleStorage from '../libs/handleStorage';
+import PanelSlider from "./panelSliders"
 
 export default function CustomDrawer({hook}) {
-  const classes = customDrawer();
+  const classes = customDrawerStyle();
   const theme = useTheme();
   const user = HandleStorage.getStorage()["user"]
-  console.log(user)
 
   return (
     <div className={classes.root}>
@@ -54,6 +54,7 @@ export default function CustomDrawer({hook}) {
             Órulo
           </Typography>
         </Toolbar>
+        <PanelSlider />
       </AppBar>
       <Drawer
         className={classes.drawer}

@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import HandleStorage from './handleStorage';
 
 class AuthService {
@@ -47,7 +46,7 @@ class AuthService {
 
         const confirmation = await this.info()
 
-        if(data.status != 200)
+        if(confirmation.status !== 200)
             return false;
             
         return data;
