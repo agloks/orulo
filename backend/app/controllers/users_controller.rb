@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   skip_before_action :authorize_request, only: :create
   
-  #GET /user/profile
+  #GET /api/user/profile
   def index
     if @current_user
       return json_response(@current_user, :ok)
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     json_response(Message.fail_operation, :bad_request)
   end
 
-  # POST /user/signup
+  # POST /api/user/signup
   # return authenticated token upon signup
   def create
     user = User.create!(user_params)
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     json_response(response, :created)
   end
 
-  # PATCH /user/favorites
+  # PATCH /api/user/favorites
   def add_favorite
     # check to avoid duplicate
     save = true

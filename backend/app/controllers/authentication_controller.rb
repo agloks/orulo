@@ -2,7 +2,7 @@
 class AuthenticationController < ApplicationController
   skip_before_action :authorize_request, only: :authenticate
   
-  # POST /auth/login
+  # POST /api/auth/login
   # return auth token once user is authenticated
   def authenticate
     auth_token =
