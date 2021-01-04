@@ -35,7 +35,14 @@ export default function Signup() {
     event.preventDefault()
 
     const auth = new AuthService()
-    auth.signup(name, email, password).then((s) => console.log(s))
+    auth.signup(name, email, password)
+    .then((s) => {
+      alert("Conta criada com sucesso")
+      window.location.href = "/"
+    })
+    .catch((e) => {
+      alert("Falha ao criar a conta, certifique se digitou os campos corretamente")
+    })
   } 
 
   return (
@@ -99,7 +106,7 @@ export default function Signup() {
               color="primary"
               className={classes.submit}
             >
-              Sign Up
+              Criar
             </Button>
             <Grid container>
             </Grid>

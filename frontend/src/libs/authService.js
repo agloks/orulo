@@ -18,9 +18,9 @@ class AuthService {
 
         if(data.status === 201) {
             HandleStorage.setStorage(data.data, "user");
-            HandleStorage.setStorage(data.data["auth_token"], "token");    
+            HandleStorage.setStorage(data.data["auth_token"], "token");
         }
-    
+        
         return data;
     }
 
