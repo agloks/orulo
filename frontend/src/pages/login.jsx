@@ -37,7 +37,13 @@ export default function Login() {
     event.preventDefault()
 
     const auth = new AuthService()
-    auth.login(email, password).then((s) => console.log(s))
+    auth.login(email, password).then((s) => {
+      alert("Login com sucesso")
+      window.location.href = "/"
+    })
+    .catch((e) => {
+      alert("Falha ao fazer o login, certifique se digitou os campos corretamente")
+    })
   } 
 
   return (
