@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs'
 import ENV from "../env"
 
 export default class OruloAPI {
@@ -7,9 +8,9 @@ export default class OruloAPI {
       Authorization: ENV.ORULO_TOKEN
     }
     this.params = {
-      city: "porto alegre",
-      // state: "rs",
-      results_per_page: 2,
+      // city: 'porto alegre',
+      state: 'rs',
+      results_per_page: 6,
       page: 1,
     }
     this.service = axios.create({
@@ -19,7 +20,7 @@ export default class OruloAPI {
   }
 
   async showList() {
-    const result = await this.service.get("/api/v2/buildings", {headers: this.header})
+    const result = await this.service.get(`/api/v2/buildings?${qs.stringify(this.params)}`, {headers: this.header})
     return result
   }
 

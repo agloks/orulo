@@ -26,8 +26,9 @@ import { customDrawerStyle, useTheme } from "../assets/styles/components/customD
 import logo from "../assets/img/orulo_logo.png"
 import HandleStorage from '../libs/handleStorage';
 import PanelSlider from "./panelSliders"
+import PanelFavorites from "./panelFavorites"
 
-export default function CustomDrawer({hook, usePanelSlider}) {
+export default function CustomDrawer({hook, usePanelSlider, usePanelFavorites}) {
   const classes = customDrawerStyle();
   const theme = useTheme();
   const user = HandleStorage.getStorage()["user"]
@@ -55,6 +56,7 @@ export default function CustomDrawer({hook, usePanelSlider}) {
           </Typography>
         </Toolbar>
       { usePanelSlider && <PanelSlider /> }
+      { usePanelFavorites && <PanelFavorites /> }
       </AppBar>
       <Drawer
         className={classes.drawer}

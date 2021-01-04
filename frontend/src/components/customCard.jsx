@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CustomCard({build}) {
-  console.log(build)
+  // console.log(build)
 
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -61,7 +61,7 @@ export default function CustomCard({build}) {
       return;
     }
 
-    auth.saveFavorite(build.id).then(s => console.log(s));
+    auth.saveFavorite(build).then(s => console.log(s));
   }
 
   return (

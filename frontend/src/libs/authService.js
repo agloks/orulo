@@ -52,13 +52,14 @@ class AuthService {
         return data;
     }
 
-    async saveFavorite(favoriteID) {
+    async saveFavorite(favorites) {
         const header = {"Authorization": HandleStorage.getStorage()["token"]}
         const data = await this.service.patch('/api/user/favorites', {
-            favorites: favoriteID,
+            favorites: favorites.id,
         }, {headers: header})
 
         if(data.status === 200) {
+            HandleStorage.setStorage(favorites, 'favorites');
             return true
         }
         

@@ -9,6 +9,7 @@ class HandleStorage {
     return({
       "user": JSON.parse(localStorage.getItem('user')),
       "token": localStorage.getItem('token'),
+      "favorites": JSON.parse(localStorage.getItem('favorites'))
     })
   }
 
@@ -17,6 +18,16 @@ class HandleStorage {
       localStorage.setItem('user', JSON.stringify(data));
     if(action === "token")
       localStorage.setItem('token', data);
+    if(action === "favorites") {
+      const f = localStorage.getItem('favorites')
+      if(f) {
+        const a = JSON.parse(f);
+        a.push(data)
+        localStorage.setItem('favorites', JSON.stringify(a))
+      }
+      else
+        localStorage.setItem('favorites', JSON.stringify([data]))
+    }
   }  
 };
 
