@@ -52,6 +52,19 @@ class AuthService {
         return data;
     }
 
+    async saveFavorite(favoriteID) {
+        const header = {"Authorization": HandleStorage.getStorage()["token"]}
+        const data = await this.service.patch('/api/user/favorites', {
+            favorites: favoriteID,
+        }, {headers: header})
+
+        if(data.status === 200) {
+            return true
+        }
+        
+        return false
+    }
+
     logout() {
         // return this.service.get('/api/user/logout')
         HandleStorage.clearStorage();

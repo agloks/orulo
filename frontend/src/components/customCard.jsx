@@ -15,6 +15,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import HandleStorage from '../libs/handleStorage';
+import AuthService from '../libs/authService';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +52,18 @@ export default function CustomCard({build}) {
     setExpanded(!expanded);
   };
 
+  const handleFavoriteButton = () => {
+    const isLogged = HandleStorage.getStorage()["token"]
+    const auth = new AuthService();
+    
+    if(!isLogged) {
+      alert("Necessario estar logado para salvar como favorito, se não possui uma conta, é facil criar uma, só clica em perfil e depois em signup")
+      return;
+    }
+
+    auth.saveFavorite(build.id).then(s => console.log(s));
+  }
+
   return (
     build !== undefined ? 
     <Card className={classes.root}>
@@ -74,7 +88,7 @@ export default function CustomCard({build}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" onClick={handleFavoriteButton}>
           <FavoriteIcon />
         </IconButton>
         <IconButton

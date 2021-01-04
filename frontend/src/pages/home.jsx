@@ -11,6 +11,7 @@ import { homeStyle } from "../assets/styles/pages/home"
 import CustomDrawer from "../components/customDrawer"
 import Login from "./login"
 import Signup from "./signup"
+import Favorites from "./favorites"
 
 export default function Home() {
   const classes = homeStyle();
@@ -30,6 +31,7 @@ export default function Home() {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/favorites" component={Favorites} />
         <Route path="/">
           <div className={classes.root}>
             <CustomDrawer hook={hook} usePanelSlider={true} />
