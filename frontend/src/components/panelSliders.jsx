@@ -25,16 +25,17 @@ export default function PanelSlider() {
     if (isInitialMount.current) {
       oruloAPI.showList().then((s) => setBuildings(s.data.buildings))
       isInitialMount.current = false;
-    } else {
-      // oruloAPI.showList().then((s) => setBuildings(s))
     }
+
+    if(buildings) return true;
   });
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
-// const oruloAPI = new OruloAPI();
-  // oruloAPI.showList().then((s) => console.log(s))
+    oruloAPI.params.state = state ? state : ""
+    oruloAPI.params.city = city ? city : ""
+    oruloAPI.showList().then((s) => setBuildings(s)).catch((e) => console.log("Error na chamada, possivel limitação pela parte da api"))
   }
 
   return (
@@ -84,7 +85,7 @@ export default function PanelSlider() {
       </Paper>
       <Grid container className={classes.rootGridCards}>
           {
-            buildings &&
+            buildings && buildings.length > 0 ?
             buildings.map((item) => {
               return (
               <Grid item xs={12} sm={4}>
@@ -92,6 +93,8 @@ export default function PanelSlider() {
               </Grid> 
               )
             })
+            :
+            <h1 style={{color: "black"}}>Não foi encontrado resultados</h1>
           }
       </Grid>
     </div>

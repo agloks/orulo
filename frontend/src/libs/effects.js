@@ -7,7 +7,6 @@ const isFavorited = (id) => {
     return false
 
   const result = favoriteds.filter((favorite) => favorite.id === id)
-  console.log(result.length > 0)
 
   return result.length > 0
 }
