@@ -7,7 +7,10 @@ export default class OruloAPI {
       Authorization: ENV.ORULO_TOKEN
     }
     this.params = {
-      city: "porto alegre"
+      city: "porto alegre",
+      // state: "rs",
+      results_per_page: 2,
+      page: 1,
     }
     this.service = axios.create({
       baseURL: "https://www.orulo.com.br",

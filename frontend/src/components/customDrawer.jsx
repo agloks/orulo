@@ -27,7 +27,7 @@ import logo from "../assets/img/orulo_logo.png"
 import HandleStorage from '../libs/handleStorage';
 import PanelSlider from "./panelSliders"
 
-export default function CustomDrawer({hook}) {
+export default function CustomDrawer({hook, usePanelSlider}) {
   const classes = customDrawerStyle();
   const theme = useTheme();
   const user = HandleStorage.getStorage()["user"]
@@ -54,7 +54,7 @@ export default function CustomDrawer({hook}) {
             Órulo
           </Typography>
         </Toolbar>
-        <PanelSlider />
+      { usePanelSlider && <PanelSlider /> }
       </AppBar>
       <Drawer
         className={classes.drawer}
