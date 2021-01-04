@@ -49,7 +49,7 @@ export default function PanelSlider() {
                 id="standard-full-width"
                 label="Cidade"
                 className = {classes.textField}
-                placeholder="Porto Alegre"
+                placeholder="Canoas"
                 fullWidth
                 margin="normal"
                 onChange={event => setCity(event.target.value)}

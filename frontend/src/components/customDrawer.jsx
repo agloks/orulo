@@ -35,6 +35,8 @@ export default function CustomDrawer({hook, usePanelSlider, usePanelFavorites}) 
 
   const handleLogout = () => {
     HandleStorage.clearStorage();
+
+    window.location.href = "/"
   }
 
   return (
