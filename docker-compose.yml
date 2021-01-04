@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  orulo:
+  back:
     build: ./backend
     image: orulo/backend
     container_name: orulo_backend
@@ -26,6 +26,16 @@ services:
       - 5432:5432
     volumes:
       - db_orulo:/var/lib/postgres/data
+
+  front:
+    build: ./frontend
+    image: orulo/frontend
+    container_name: orulo_frontend
+    restart: always
+    ports:
+      - 3000:3000
+    links:
+      - db
 
 volumes:
   db_orulo:
