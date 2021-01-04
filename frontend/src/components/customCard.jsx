@@ -59,7 +59,7 @@ export default function CustomCard({build}) {
     const auth = new AuthService();
     
     if(!isLogged) {
-      alert("Necessario estar logado para salvar como favorito, se não possui uma conta, é facil criar uma, só clica em perfil e depois em signup")
+      alert("Necessario estar logado para salvar como favorito, caso ainda não possua uma conta é facil de criar, só clica em login e depois em signup")
       return;
     }
 

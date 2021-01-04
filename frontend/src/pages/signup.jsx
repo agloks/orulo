@@ -106,7 +106,7 @@ export default function Signup() {
               color="primary"
               className={classes.submit}
             >
-              Sign Up
+              Criar
             </Button>
             <Grid container>
             </Grid>

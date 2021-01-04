@@ -33,6 +33,10 @@ export default function CustomDrawer({hook, usePanelSlider, usePanelFavorites}) 
   const theme = useTheme();
   const user = HandleStorage.getStorage()["user"]
 
+  const handleLogout = () => {
+    HandleStorage.clearStorage();
+  }
+
   return (
     <div className={classes.root}>
       <AppBar
@@ -85,7 +89,7 @@ export default function CustomDrawer({hook, usePanelSlider, usePanelFavorites}) 
           <Grid item xs={6}>
             <Divider className={classes.divider}/>
             <List>
-              {['Home', 'Favorites'].map((text, index) => (
+              {['Home', 'Favoritos'].map((text, index) => (
                 index % 2 === 0 ?
                 <Link to="/">
                   <ListItem button key={text}>
@@ -106,26 +110,37 @@ export default function CustomDrawer({hook, usePanelSlider, usePanelFavorites}) 
           <Grid item xs={4} className={classes.gridDrawerFooter}>
             <List className={classes.gridDrawerFooterList}>
               <Divider className={classes.divider}/>
-              {['Perfil', 'Logout'].map((text, index) => (
-                index % 2 === 0 ? 
-                <Link to="/login">
-                  <ListItem button key={text}>
-                    <ListItemIcon>
-                      <AccountCircleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                </Link>
+              {
+                user ?
+                <div>
+                  <Link to="/">
+                    <ListItem button key='Perfil'>
+                      <ListItemIcon>
+                        <AccountCircleIcon />
+                      </ListItemIcon>
+                      <ListItemText primary='Perfil' />
+                    </ListItem>
+                  </Link>
+                  <Link to="/">
+                    <ListItem button key='Logout'>
+                      <ListItemIcon onClick={handleLogout}>
+                        <ExitToAppIcon />
+                      </ListItemIcon>
+                      <ListItemText primary='Logout'/>
+                    </ListItem>
+                  </Link>
+                </div>
                 : 
-                <Link to="/logout">
-                  <ListItem button key={text}>
-                    <ListItemIcon>
-                      <ExitToAppIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                </Link>
-              ))}
+                <Link to="/login">
+                <ListItem button key='Login'>
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Login' />
+                </ListItem>
+              </Link>
+              }
+            
             </List>
           </Grid>
         </Grid>

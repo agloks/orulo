@@ -61,7 +61,7 @@ export default function Login() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Login
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
@@ -99,12 +99,12 @@ export default function Login() {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Submit
             </Button>
             <Grid container>
               <Grid item>
                 <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"Não tem uma conta? Clica aqui para criar"}
                 </Link>
               </Grid>
             </Grid>
