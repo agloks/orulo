@@ -42,7 +42,7 @@ export default function PanelSlider() {
             buildings &&
             buildings.map((item) => {
               return (
-              <Grid item xs={12} sm={4} className={classes.itemGridCards}>
+              <Grid item xs={12} sm={4}>
                 <CustomCard build={item}/>
               </Grid> 
               )

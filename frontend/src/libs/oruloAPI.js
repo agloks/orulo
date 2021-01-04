@@ -8,8 +8,8 @@ export default class OruloAPI {
       Authorization: ENV.ORULO_TOKEN
     }
     this.params = {
-      // city: 'porto alegre',
-      state: 'rs',
+      city: 'Canoas',
+      state: 'RS',
       results_per_page: 9,
       page: 1,
     }

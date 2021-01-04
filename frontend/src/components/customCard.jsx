@@ -17,6 +17,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import HandleStorage from '../libs/handleStorage';
 import AuthService from '../libs/authService';
+import {isFavorited} from "../libs/effects"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,7 +95,7 @@ export default function CustomCard({build}) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={handleFavoriteButton}>
-          <FavoriteIcon />
+          { isFavorited(build.id) ? <FavoriteIcon style={{color: "blue"}}/> : <FavoriteIcon />  }
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {

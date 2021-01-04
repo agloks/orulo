@@ -24,16 +24,6 @@ const panelSlidersStyle = makeStyles((theme) => ({
     // height: "400vh",
     // overflow: "scroll",
   },
-  itemGridCards: {
-    margin: "1%",
-    maxHeight: "300px"
-  },
-  sliderPreco: {
-  },
-  gridItem: {
-    // marginLeft: theme.spacing(4),
-    // marginRight: theme.spacing(4),
-  }
 }));
 
 
