@@ -47,4 +47,6 @@ npm i && npm start
 - Prepara o ambiente do backend para teste - desenvolvimento - produção
 - Melhorar a UI da aplicação
 - Eliminar os boilerplates
+- Códigos para tratamento de erros com finalidade de uma maior resiliência no backend
+- Entre outros...
 ```
