@@ -18,18 +18,20 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
-
-
-import { customDrawer, useTheme } from "../assets/styles/components/customDrawer"
-import logo from "../assets/img/orulo_logo.png"
-
 import {
   Link
 } from "react-router-dom";
 
-export default function CustomDrawer({hook}) {
-  const classes = customDrawer();
+import { customDrawerStyle, useTheme } from "../assets/styles/components/customDrawer"
+import logo from "../assets/img/orulo_logo.png"
+import HandleStorage from '../libs/handleStorage';
+import PanelSlider from "./panelSliders"
+import PanelFavorites from "./panelFavorites"
+
+export default function CustomDrawer({hook, usePanelSlider, usePanelFavorites}) {
+  const classes = customDrawerStyle();
   const theme = useTheme();
+  const user = HandleStorage.getStorage()["user"]
 
   return (
     <div className={classes.root}>
@@ -53,6 +55,8 @@ export default function CustomDrawer({hook}) {
             Órulo
           </Typography>
         </Toolbar>
+      { usePanelSlider && <PanelSlider /> }
+      { usePanelFavorites && <PanelFavorites /> }
       </AppBar>
       <Drawer
         className={classes.drawer}

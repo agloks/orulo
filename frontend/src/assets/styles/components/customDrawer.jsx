@@ -3,7 +3,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 const drawerWidth = 187;
 
-const customDrawer = makeStyles((theme) => ({
+const customDrawerStyle = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
@@ -86,4 +86,4 @@ const customDrawer = makeStyles((theme) => ({
 }));
 
 
-export { customDrawer, useTheme }
+export { customDrawerStyle, useTheme }
