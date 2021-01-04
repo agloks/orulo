@@ -33,9 +33,10 @@ export default function PanelSlider() {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    oruloAPI.params.state = state ? state : ""
-    oruloAPI.params.city = city ? city : ""
-    oruloAPI.showList().then((s) => setBuildings(s)).catch((e) => console.log("Error na chamada, possivel limitação pela parte da api"))
+    // oruloAPI.params.state = state ? state : ""
+    // oruloAPI.params.city = city ? city : ""
+    // oruloAPI.showList().then((s) => setBuildings(s)).catch((e) => console.log("Error na chamada, possivel limitação pela parte da api"))
+    alert("Feature desativada, não implementada 100% para uso")
   }
 
   return (
