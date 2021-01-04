@@ -21,7 +21,9 @@ import AuthService from '../libs/authService';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 350,
-    marginBottom: "5% 0%",
+    minHeight: 500,
+    padding: "5px",
+    margin: "20px",
   },
   media: {
     height: 0,
@@ -74,7 +76,7 @@ export default function CustomCard({build}) {
           </IconButton>
         }
         title={build.name}
-        subheader="September 14, 2016"
+        subheader={build.finality}
       />
       <CardMedia
         className={classes.media}
@@ -83,8 +85,11 @@ export default function CustomCard({build}) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          Price: {build["min_price"]} <br />
+          Area: {build["max_area"]} <br />
+          Quartos: {build["max_bedrooms"]} <br />
+          Banheiros: {build["max_bathrooms"]} <br />
+          Garagem: {build["max_parking"]} <br />
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

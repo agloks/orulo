@@ -5,6 +5,7 @@ const panelSlidersStyle = makeStyles((theme) => ({
   rootABC: {
     height: "100vh",
     background: "whitesmoke",
+    overflow: "scroll"
   },
   paperRoot: {
     // height: "20vh",
@@ -20,8 +21,12 @@ const panelSlidersStyle = makeStyles((theme) => ({
   },
   rootGridCards: {
     padding: "5%",
-    height: "400vh",
-    overflow: "scroll",
+    // height: "400vh",
+    // overflow: "scroll",
+  },
+  itemGridCards: {
+    margin: "1%",
+    maxHeight: "300px"
   },
   sliderPreco: {
   },

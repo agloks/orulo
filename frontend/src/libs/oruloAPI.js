@@ -10,7 +10,7 @@ export default class OruloAPI {
     this.params = {
       // city: 'porto alegre',
       state: 'rs',
-      results_per_page: 6,
+      results_per_page: 9,
       page: 1,
     }
     this.service = axios.create({
