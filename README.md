@@ -22,7 +22,19 @@ docker-compose up -d --build
 docker ps -a
 ```
 
-### 3) Agora só entrar na pasta do frontend, e roda os seguintes comandos
+### 3) Agora é necessário cria um arquivo env.js em frontend/src para colocar as credencias de acesso da API da orulo, cria o arquivo com o seguinte conteudo
+
+```
+// frontend/src/env.js
+
+const ENV = {
+  ORULO_TOKEN: 'TOKEN DE ACESSO'
+}
+
+export default ENV;
+```
+
+### 3) Agora só entrar na raiz do frontend, e roda os seguintes comandos
 
 ```
 npm i && npm start
